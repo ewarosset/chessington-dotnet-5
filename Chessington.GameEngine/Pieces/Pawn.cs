@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Chessington.GameEngine.Pieces
@@ -24,14 +25,27 @@ namespace Chessington.GameEngine.Pieces
                 direction = 1;
             }
             
-            moves.Add(new Square(currentSquare.Row+(direction), currentSquare.Col));
+            // is there piece in front of us (one space)
 
-            if (this.numberOfMoves == 0)
+            var nextSquare = new Square(currentSquare.Row + (direction), currentSquare.Col);
+            
+
+            if (board.GetPiece(nextSquare)== null)
             {
-                direction = direction * 2;
-                moves.Add(new Square(currentSquare.Row+(direction), currentSquare.Col));
+                moves.Add(nextSquare);
+                var nextTwoSquare = new Square(currentSquare.Row + (direction * 2), currentSquare.Col);
+                
+                if (this.numberOfMoves == 0 && board.GetPiece(nextTwoSquare) == null)
+                {
+                    //we are now checking if the second square is also empty
+                    moves.Add(nextTwoSquare);
+                }
             }
             
+            else
+            {
+                
+            }
             return moves;
 
         }
