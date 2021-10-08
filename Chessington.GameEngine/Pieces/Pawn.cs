@@ -10,7 +10,7 @@ namespace Chessington.GameEngine.Pieces
 
         public override IEnumerable<Square> GetAvailableMoves(Board board)
         {
-            var currentSqure = board.FindPiece(this);
+            var currentSquare = board.FindPiece(this);
             List<Square> moves = new List<Square>();
 
             int direction;
@@ -24,7 +24,7 @@ namespace Chessington.GameEngine.Pieces
                 direction = 1;
             }
             
-            moves.Add(new Square(currentSqure.Row+(direction), currentSqure.Col));
+            moves.Add(new Square(currentSquare.Row+(direction), currentSquare.Col));
             return moves;
 
         }
