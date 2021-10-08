@@ -25,6 +25,13 @@ namespace Chessington.GameEngine.Pieces
             }
             
             moves.Add(new Square(currentSquare.Row+(direction), currentSquare.Col));
+
+            if (this.numberOfMoves == 0)
+            {
+                direction = direction * 2;
+                moves.Add(new Square(currentSquare.Row+(direction), currentSquare.Col));
+            }
+            
             return moves;
 
         }
