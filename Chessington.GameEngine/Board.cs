@@ -19,6 +19,16 @@ namespace Chessington.GameEngine
             CurrentPlayer = currentPlayer;
             CapturedPieces = new List<Piece>();
         }
+        
+        public bool IsWithinBoard(int row, int col)
+        {
+            if (row >= 0 && row <= _board.GetLength(0) && col >= 0 && col <= _board.GetLength(1) )
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         public void AddPiece(Square square, Piece pawn)
         {
