@@ -40,6 +40,12 @@ namespace Chessington.GameEngine.Pieces
                 {
                     break;
                 }
+                
+                if (nextPiece != null && nextPiece.Player != Player)
+                {
+                    moves.Add(nextSquare);
+                    break;
+                }
 
                 moves.Add(nextSquare);
             }
@@ -73,6 +79,12 @@ namespace Chessington.GameEngine.Pieces
                         break;
                     }
                     
+                    if (nextPiece != null && nextPiece.Player != Player)
+                    {
+                        moves.Add(nextSquare);
+                        break;
+                    }
+                    
                     moves.Add(nextSquare);
                 }
             }
@@ -100,6 +112,12 @@ namespace Chessington.GameEngine.Pieces
 
                     if (nextPiece != null && nextPiece.Player == Player)
                     {
+                        break;
+                    }
+                    
+                    if (nextPiece != null && nextPiece.Player != Player)
+                    {
+                        moves.Add(nextSquare);
                         break;
                     }
                     
@@ -131,6 +149,12 @@ namespace Chessington.GameEngine.Pieces
 
                     if (nextPiece != null && nextPiece.Player == Player)
                     {
+                        break;
+                    }
+                    
+                    if (nextPiece != null && nextPiece.Player != Player)
+                    {
+                        moves.Add(nextSquare);
                         break;
                     }
                     
