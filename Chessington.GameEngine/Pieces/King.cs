@@ -19,7 +19,7 @@ namespace Chessington.GameEngine.Pieces
             var currentSquare = board.FindPiece(this);
             List<Square> moves = new List<Square>();
 
-            for (int col = currentSquare.Col - 1; col <= currentSquare.Row + 1; col++)
+            for (int col = currentSquare.Col - 1; col <= currentSquare.Col + 1; col++)
             {
                 for (int row = currentSquare.Row - 1; row <= currentSquare.Row + 1; row++)
                 {
