@@ -13,40 +13,45 @@ namespace Chessington.GameEngine.Pieces
         {
             var currentSquare = board.FindPiece(this);
             List<Square> moves = new List<Square>();
-            
+
             // rightup row-1 col+1
-            
-            for (int col = currentSquare.Col + 1; col <= 7; col++)
+
+            for (int index = 1; index <= 7; index++)
             {
-                for (int row = currentSquare.Row - 1; row >= 0; row--)
+                var col = currentSquare.Col + index;
+                var row = currentSquare.Row - index;
+
+                Console.WriteLine("row: " + row + "col: " + col);
+
+                if (!board.IsWithinBoardInt(row, col))
                 {
-                    Console.WriteLine("row: " + row + "col: " + col);
-
-                    if (!board.IsWithinBoardInt(row, col))
-                    {
-                        continue;
-                    }
-
-                    if (currentSquare == new Square(row, col))
-                    {
-                        continue;
-                    }
-
-                    var nextSquare = new Square(row, col);
-                    var nextPiece = board.GetPiece(nextSquare);
-
-                    if (nextPiece == null || nextPiece.Player != Player)
-                    {
-                        moves.Add(nextSquare);
-                    }
+                    continue;
                 }
+
+                if (currentSquare == new Square(row, col))
+                {
+                    continue;
+                }
+
+                var nextSquare = new Square(row, col);
+                var nextPiece = board.GetPiece(nextSquare);
+
+                if (nextPiece != null && nextPiece.Player == Player)
+                {
+                    break;
+                }
+
+                moves.Add(nextSquare);
             }
+        
+    
             
             // rightdown row+1 col +1
             
-            for (int col = currentSquare.Col + 1; col <= 7; col++)
+            for (int index = 1; index <= 7; index++)
             {
-                for (int row = currentSquare.Row +1; row <= 7; row++)
+                var col = currentSquare.Col + index;
+                var row = currentSquare.Row + index;
                 {
                     Console.WriteLine("row: " + row + "col: " + col);
 
@@ -63,17 +68,20 @@ namespace Chessington.GameEngine.Pieces
                     var nextSquare = new Square(row, col);
                     var nextPiece = board.GetPiece(nextSquare);
 
-                    if (nextPiece == null || nextPiece.Player != Player)
+                    if (nextPiece != null && nextPiece.Player == Player)
                     {
-                        moves.Add(nextSquare);
+                        break;
                     }
+                    
+                    moves.Add(nextSquare);
                 }
             }
             // leftup row-1, col-1
             
-            for (int col = currentSquare.Col - 1; col >= 0; col--)
+            for (int index = 1; index <= 7; index++)
             {
-                for (int row = currentSquare.Row - 1; row >= 0; row--)
+                var col = currentSquare.Col - index;
+                var row = currentSquare.Row - index;
                 {
                     Console.WriteLine("row: " + row + "col: " + col);
 
@@ -90,18 +98,21 @@ namespace Chessington.GameEngine.Pieces
                     var nextSquare = new Square(row, col);
                     var nextPiece = board.GetPiece(nextSquare);
 
-                    if (nextPiece == null || nextPiece.Player != Player)
+                    if (nextPiece != null && nextPiece.Player == Player)
                     {
-                        moves.Add(nextSquare);
+                        break;
                     }
+                    
+                    moves.Add(nextSquare);
                 }
             }
             
             // leftdown row+1, col-1
             
-            for (int col = currentSquare.Col - 1; col >= 0; col--)
+            for (int index = 1; index <= 7; index++)
             {
-                for (int row = currentSquare.Row +1; row <= 7; row++)
+                var col = currentSquare.Col - index;
+                var row = currentSquare.Row + index;
                 {
                     Console.WriteLine("row: " + row + "col: " + col);
 
@@ -118,10 +129,12 @@ namespace Chessington.GameEngine.Pieces
                     var nextSquare = new Square(row, col);
                     var nextPiece = board.GetPiece(nextSquare);
 
-                    if (nextPiece == null || nextPiece.Player != Player)
+                    if (nextPiece != null && nextPiece.Player == Player)
                     {
-                        moves.Add(nextSquare);
+                        break;
                     }
+                    
+                    moves.Add(nextSquare);
                 }
             }
 
