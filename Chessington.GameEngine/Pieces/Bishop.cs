@@ -96,6 +96,7 @@ namespace Chessington.GameEngine.Pieces
                     }
                 }
             }
+            
             // leftdown row+1, col-1
             
             for (int col = currentSquare.Col - 1; col >= 0; col--)

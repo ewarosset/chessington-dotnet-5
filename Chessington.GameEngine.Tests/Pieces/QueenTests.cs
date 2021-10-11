@@ -102,6 +102,34 @@ namespace Chessington.GameEngine.Tests.Pieces
 
 
         }
+        
+        [Test]
+
+        public void CanMoveRight()
+        {
+            var board = new Board();
+            var queen = new Queen(Player.White);
+            board.AddPiece(Square.At(4, 5), queen);
+
+            var moves = queen.GetAvailableMoves(board).ToList();
+
+            moves.Should().Contain(Square.At(4, 6));
+            moves.Should().Contain(Square.At(4, 7));
+        }
+        
+        [Test]
+
+        public void CanMoveLeft()
+        {
+            var board = new Board();
+            var queen = new Queen(Player.White);
+            board.AddPiece(Square.At(5, 2), queen);
+
+            var moves = queen.GetAvailableMoves(board).ToList();
+
+            moves.Should().Contain(Square.At(5, 1));
+            moves.Should().Contain(Square.At(5, 0));
+        }
 
         [Test]
 
