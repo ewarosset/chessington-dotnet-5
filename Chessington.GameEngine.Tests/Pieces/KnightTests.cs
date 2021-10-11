@@ -73,7 +73,7 @@ namespace Chessington.GameEngine.Tests.Pieces
 
             var moves = knight.GetAvailableMoves(board);
 
-            moves.Should().Contain(Square.At(5, 1));
+            moves.Should().Contain(Square.At(5, 2));
 
         }
 
@@ -169,8 +169,7 @@ namespace Chessington.GameEngine.Tests.Pieces
 
 
             var moves = knight.GetAvailableMoves(board).ToList();
-
-            moves.Should().Contain(Square.At(6, 3));
+            
             moves.Should().Contain(Square.At(5, 1));
             moves.Should().Contain(Square.At(7, 1));
             moves.Should().Contain(Square.At(4, 2));
