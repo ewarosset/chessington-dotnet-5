@@ -29,6 +29,16 @@ namespace Chessington.GameEngine
 
             return false;
         }
+        
+        public bool IsWithinBoardInt(int row, int col)
+        {
+            if (row >= 0 && row <= 7 && col >= 0 && col <= 7)
+            {
+                return true;
+            }
+
+            return false;
+        }
 
         public void AddPiece(Square square, Piece pawn)
         {
