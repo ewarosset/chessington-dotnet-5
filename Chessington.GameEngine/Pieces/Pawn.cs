@@ -40,7 +40,7 @@ namespace Chessington.GameEngine.Pieces
                 moves.Add(nextSquare);
                 var nextTwoSquare = new Square(currentSquare.Row + (direction * 2), currentSquare.Col);
                 
-                if (this.numberOfMoves == 0 && board.GetPiece(nextTwoSquare) == null)
+                if (this.NumberOfMoves == 0 && board.GetPiece(nextTwoSquare) == null)
                 {
                     //we are now checking if the second square is also empty
                     moves.Add(nextTwoSquare);
@@ -53,21 +53,23 @@ namespace Chessington.GameEngine.Pieces
             if ((currentSquare.Col + right) >= 0 && (currentSquare.Col + right) <= 7)
             {
                 var diagonalRight = new Square(currentSquare.Row + (direction), currentSquare.Col + right);
-                if (board.GetPiece(diagonalRight) != null)
+                var rightPiece = board.GetPiece(diagonalRight);
+                if (rightPiece != null && rightPiece.Player != Player )
                 {
                     moves.Add(diagonalRight);
                 }
             }
             
             // is there a piece diagonally to the left
-            if ((currentSquare.Col + left) >= 0 && (currentSquare.Col + left) <= 7){
-                
+            if ((currentSquare.Col + left) >= 0 && (currentSquare.Col + left) <= 7)
+            {
                 var diagonalLeft = new Square(currentSquare.Row + (direction), currentSquare.Col + left);
-                    if (board.GetPiece(diagonalLeft) != null)
-                    {
-                        moves.Add(diagonalLeft);
-                    } 
-            }
+                var leftPiece = board.GetPiece(diagonalLeft);
+                if (leftPiece != null && leftPiece.Player != Player)
+                {
+                    moves.Add(diagonalLeft);
+                } 
+            } 
             
             return moves;
 
